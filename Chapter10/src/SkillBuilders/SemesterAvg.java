@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
+
 import javax.swing.JLabel;
 
 public class SemesterAvg {
@@ -121,14 +123,15 @@ public class SemesterAvg {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				double avgGrade;
 				String grade1 = gr1.getText();
 				String grade2 = gr2.getText();
 				String grade3 = gr3.getText();
 				
-				avgGrade = (Double.parseDouble(grade1) + Double.parseDouble(grade2) + Double.parseDouble(grade3)) / 3 ;
+				double avgGrade = (Double.parseDouble(grade1) + Double.parseDouble(grade2) + Double.parseDouble(grade3)) / 3 ;
 				
-				displayavg.setText(Double.toString(avgGrade));
+				DecimalFormat dc = new DecimalFormat("0.0");
+				
+				displayavg.setText(dc.format(avgGrade));
 			}
 		});
 		avg.setBounds(302, 78, 111, 86);
