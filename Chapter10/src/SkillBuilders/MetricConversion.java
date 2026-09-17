@@ -82,6 +82,5 @@ public class MetricConversion {
 			display.setText("1 pound = 0.4536 kilograms");
 		}
 		
-		
 	}
 }
