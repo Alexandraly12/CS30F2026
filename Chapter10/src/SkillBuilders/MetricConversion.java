@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MetricConversion {
 
@@ -48,6 +50,11 @@ public class MetricConversion {
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
+		JLabel display = new JLabel("");
+		display.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		display.setBounds(20, 176, 162, 28);
+		panel.add(display);
+		
 		JLabel lblNewLabel = new JLabel("Select a conversion type:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
 		lblNewLabel.setBounds(20, 27, 220, 23);
@@ -55,32 +62,38 @@ public class MetricConversion {
 		
 		String[] conversion = {" ", "inches to centimeters", "feet to meters", "gallon to liters", "pound to kilograms"};
 		JComboBox conType = new JComboBox(conversion);
+		conType.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				
+				if(conType.getSelectedItem().equals("inches to centimeters"))
+				{
+					display.setText("1 inch = 2.54 centimeters");
+				}
+				if(conType.getSelectedItem().equals("feet to meters"))
+				{
+					display.setText("1 foot = 0.3048 meters");
+				}
+				if (conType.getSelectedItem().equals("gallon to liters"))
+				{
+					display.setText("1 gallon = 4.5461 liters");
+				}
+				if (conType.getSelectedItem().equals("pound to kilograms"))
+				{
+					display.setText("1 pound = 0.4536 kilograms");
+				}
+				
+			}
+		});
 		conType.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		conType.setSelectedIndex(0);
 		conType.setBounds(20, 61, 232, 22);
 		panel.add(conType);
 		
-		JLabel display = new JLabel("");
-		display.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		display.setBounds(20, 176, 162, 14);
-		panel.add(display);
 		
-		if(conType.getSelectedItem().equals("inches to centimeters"))
-		{
-			display.setText("1 inch = 2.54 centimeters");
-		}
-		else if(conType.getSelectedItem().equals("feet to meters"))
-		{
-			display.setText("1 foot = 0.3048 meters");
-		}
-		else if (conType.getSelectedItem().equals("gallon to liters"))
-		{
-			display.setText("1 gallon = 4.5461 liters");
-		}
-		else if (conType.getSelectedItem().equals("pound to kilograms"))
-		{
-			display.setText("1 pound = 0.4536 kilograms");
-		}
+		
+		
 		
 	}
 }
