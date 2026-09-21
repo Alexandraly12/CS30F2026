@@ -10,6 +10,7 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.DefaultComboBoxModel;
 
 public class MetricConversion {
 
@@ -60,8 +61,14 @@ public class MetricConversion {
 		lblNewLabel.setBounds(20, 27, 220, 23);
 		panel.add(lblNewLabel);
 		
-		String[] conversion = {" ", "inches to centimeters", "feet to meters", "gallon to liters", "pound to kilograms"};
-		JComboBox conType = new JComboBox(conversion);
+		JComboBox conType = new JComboBox();
+		
+		conType.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		conType.setModel(new DefaultComboBoxModel(new String[] {"Click to select", "inches to centimeters", "feet to meters", "gallon to liters", "pound to kilograms"}));
+		conType.setSelectedIndex(0);
+		conType.setBounds(20, 61, 232, 22);
+		panel.add(conType);
+		
 		conType.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -86,10 +93,6 @@ public class MetricConversion {
 				
 			}
 		});
-		conType.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		conType.setSelectedIndex(0);
-		conType.setBounds(20, 61, 232, 22);
-		panel.add(conType);
 		
 		
 		
