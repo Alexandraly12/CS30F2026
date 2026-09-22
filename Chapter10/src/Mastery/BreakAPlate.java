@@ -91,14 +91,15 @@ public class BreakAPlate {
 					{
 						plates.setIcon(allBrk);
 						prize.setIcon(tiger);
-						button.setText("Play Again");
 					}
 					else
 					{
 						plates.setIcon(twoBrk);
 						prize.setIcon(sticker);
-						button.setText("Play Again");
 					}
+					
+					button.setText("Play Again");
+					
 				}
 				//if(button.getText().equals("Play Again"))
 				//{
