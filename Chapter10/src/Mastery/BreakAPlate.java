@@ -71,11 +71,13 @@ public class BreakAPlate {
 		panel.add(plates);
 		
 		JLabel prize = new JLabel("");
-		prize.setBounds(148, 221, 101, 92);
+		prize.setBounds(151, 221, 101, 92);
 		panel.add(prize);
 		
 		JButton button = new JButton("");
-		button.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+		button.setForeground(new Color(255, 255, 255));
+		button.setBackground(new Color(0, 64, 128));
+		button.setFont(new Font("Trebuchet MS", Font.BOLD, 14));
 		button.setText("Play");
 		button.addActionListener(new ActionListener() 
 		{
@@ -101,18 +103,19 @@ public class BreakAPlate {
 					button.setText("Play Again");
 					
 				}
-				//if(button.getText().equals("Play Again"))
-				//{
-					//plates.setIcon(unbroken);
-					//prize.setIcon(blank);
-					//button.setText("Play");
-				//}
+				else if(button.getText().equals("Play Again"))
+				{
+					plates.setIcon(unbroken);
+					prize.setIcon(blank);
+					button.setText("Play");
+				}
 			}
 		});
-		button.setBounds(139, 148, 110, 42);
+		button.setBounds(139, 143, 110, 42);
 		panel.add(button);
 		
 		JLabel prizeText = new JLabel("Your Prize:");
+		prizeText.setFont(new Font("Tempus Sans ITC", Font.BOLD, 13));
 		prizeText.setBounds(169, 196, 80, 14);
 		panel.add(prizeText);
 		
