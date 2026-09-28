@@ -55,10 +55,10 @@ public class School
 	private void initialize() 
 	{
 		
-		ImageIcon crescent = new ImageIcon("../Chapter10/src/Mastery/crescent.jpg");
-		ImageIcon swc = new ImageIcon("../Chapter10/src/Mastery/swc logo.png");
-		ImageIcon dief = new ImageIcon("../Chapter10/src/Mastery/Dief.png");
-		ImageIcon nt = new ImageIcon("../Chapter10/src/Mastery/Northtrail.png");
+		ImageIcon crescent = new ImageIcon("../Chapter10/src/Mastery/crescent.gif");
+		ImageIcon swc = new ImageIcon("../Chapter10/src/Mastery/swc logo.gif");
+		ImageIcon dief = new ImageIcon("../Chapter10/src/Mastery/Dief.gif");
+		ImageIcon nt = new ImageIcon("../Chapter10/src/Mastery/Northtrail.gif");
 		ImageIcon western = new ImageIcon("../Chapter10/src/Mastery/Western.png");
 		
 		frame = new JFrame();
@@ -114,7 +114,7 @@ public class School
 		panel.add(school);
 		
 		JLabel logo = new JLabel("");
-		logo.setBounds(23, 243, 306, 157);
+		logo.setBounds(23, 243, 306, 191);
 		panel.add(logo);
 		
 		JTextArea display = new JTextArea();
