@@ -21,6 +21,11 @@ import javax.swing.JTextArea;
 public class LocalBank 
 {
 
+	Bank bank = new Bank();
+	Customer cust = new Customer(null, null);
+	Account act = new Account(null);
+	
+	
 	private JFrame frame;
 	private JTextField accNum;
 	private JTextField Amt;
@@ -102,7 +107,7 @@ public class LocalBank
 			{
 				if(accNum.getText().equals("Account Number:"))
 				{
-					accNum.setText(" ");
+					accNum.setText("");
 				}
 			}
 		});
@@ -121,7 +126,7 @@ public class LocalBank
 			{
 				if(Amt.getText().equals("Amount Deposit/Withdrawal:"))
 				{
-					Amt.setText(" ");
+					Amt.setText("");
 				}
 			}
 		});
@@ -140,7 +145,7 @@ public class LocalBank
 			{
 				if(fN.getText().equals("First Name:"))
 				{
-					fN.setText(" ");
+					fN.setText("");
 				}
 			}
 		});
@@ -158,7 +163,7 @@ public class LocalBank
 			{
 				if(lN.getText().equals("Last Name:"))
 				{
-					lN.setText(" ");
+					lN.setText("");
 				}
 			}
 		});
@@ -176,7 +181,7 @@ public class LocalBank
 			{
 				if(begBalance.getText().equals("Beginning Balance:"))
 				{
-					begBalance.setText(" ");
+					begBalance.setText("");
 				}
 			}
 		});
@@ -200,10 +205,13 @@ public class LocalBank
 				{
 					String firstN = fN.getText();
 					String lastN = lN.getText();
-					char fChar = fN.getText().charAt(1);
+					double bal = 10;
 					
-					display.setText("Account Created!"
-							+ "\nAccount Number:" + fChar + lastN);
+					display.setText(bank.addAccount(firstN, lastN, bal));
+					
+				}
+				else if(actionBox.getSelectedItem().equals("Add An Account"))
+				{
 					
 				}
 			}
