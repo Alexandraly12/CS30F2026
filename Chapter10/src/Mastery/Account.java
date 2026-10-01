@@ -107,9 +107,9 @@ public class Account
 		String accountString;
 		NumberFormat money = NumberFormat.getCurrencyInstance();
 
-		accountString = acctID + " ";	//changed for Chapter 11 Exer 1
+		accountString = " " + acctID + "\n";	//changed for Chapter 11 Exer 1
 		accountString += cust.toString();
-		accountString += "Current balance is " + money.format(balance);
+		accountString += "\n Current balance is " + money.format(balance);
 	 	return(accountString);
 	}
 

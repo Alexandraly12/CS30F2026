@@ -89,13 +89,17 @@ public class LocalBank
 				{
 					Instruction.setText("Complete the Information in BLACK:");
 				}
-				else
+				else if(actionBox.getSelectedItem().equals("Check Balance"))
 				{
 					Instruction.setText("Complete the Information in RED:");
 				}
+				else
+				{
+					Instruction.setText("Complete the Information in RED and BLUE:");
+				}
 			}
 		});
-		actionBox.setModel(new DefaultComboBoxModel(new String[] {"", "Add An Account", "Deposit", "Withdrawal", "Check Balance"}));
+		actionBox.setModel(new DefaultComboBoxModel(new String[] {"", "Add An Account", "Remove An Account", "Deposit", "Withdrawal", "Check Balance"}));
 		actionBox.setBounds(10, 48, 412, 29);
 		panel.add(actionBox);
 		
@@ -130,7 +134,7 @@ public class LocalBank
 				}
 			}
 		});
-		Amt.setForeground(new Color(255, 0, 0));
+		Amt.setForeground(new Color(0, 0, 255));
 		Amt.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		Amt.setText("Amount Deposit/Withdrawal:");
 		Amt.setColumns(10);
@@ -205,15 +209,63 @@ public class LocalBank
 				{
 					String firstN = fN.getText();
 					String lastN = lN.getText();
-					double bal = 10;
+					String beg = begBalance.getText();
+					double bal = Double.parseDouble(beg);
 					
-					display.setText(bank.addAccount(firstN, lastN, bal));
+					Account newacc = new Account(bal, firstN, lastN);
+					String accId = newacc.getID();
 					
+					String newact = bank.addAccount(firstN, lastN, bal);
+					
+					display.setText("Account Added!"
+							+"\nAcc ID: " + newact
+							+ "\nSelect Next Action.");
 				}
-				else if(actionBox.getSelectedItem().equals("Add An Account"))
+				else if(actionBox.getSelectedItem().equals("Remove An Account"))
 				{
+					String acc = accNum.getText();
+					Account remAcc = new Account(acc);
+					
 					
 				}
+				else if(actionBox.getSelectedItem().equals("Deposit"))
+				{
+					String acc = accNum.getText();
+					String amount = Amt.getText();
+					double amt = Double.parseDouble(amount);
+					bank.transaction(1, acc, amt);
+					
+					display.setText("$" + amount + " deposited."
+							+ "\nSelect Next Action.");
+				}
+				else if (actionBox.getSelectedItem().equals("Withdrawal"))
+				{
+					String acc = accNum.getText();
+					String amount = Amt.getText();
+					double amt = Double.parseDouble(amount);
+					bank.transaction(2, acc, amt);
+					
+					display.setText("$" + amount + " withdrew."
+							+ "\nSelect Next Action.");
+				}
+				else if (actionBox.getSelectedItem().equals("Check Balance"))
+				{
+					String acc = accNum.getText();
+					String newbal = bank.checkBalance(acc);
+					
+					display.setText(newbal);
+				}
+				else
+				{
+					display.setText("Select An Action.");
+				}
+				
+				accNum.setText("Account Number:");
+				Amt.setText("Amount Deposit/Withdrawal:");
+				fN.setText("First Name:");
+				lN.setText("Last Name:");
+				begBalance.setText("Beginning Balance:");
+				
 			}
 		});
 		process.setBounds(10, 447, 199, 43);
