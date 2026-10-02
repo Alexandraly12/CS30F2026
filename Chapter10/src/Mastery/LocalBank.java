@@ -22,9 +22,6 @@ public class LocalBank
 {
 
 	Bank bank = new Bank();
-	Customer cust = new Customer(null, null);
-	Account act = new Account(null);
-	
 	
 	private JFrame frame;
 	private JTextField accNum;
@@ -89,6 +86,10 @@ public class LocalBank
 				{
 					Instruction.setText("Complete the Information in BLACK:");
 				}
+				else if(actionBox.getSelectedItem().equals("Remove An Account"))
+				{
+					Instruction.setText("Complete the Information in RED:");
+				}
 				else if(actionBox.getSelectedItem().equals("Check Balance"))
 				{
 					Instruction.setText("Complete the Information in RED:");
@@ -99,7 +100,7 @@ public class LocalBank
 				}
 			}
 		});
-		actionBox.setModel(new DefaultComboBoxModel(new String[] {"", "Add An Account", "Remove An Account", "Deposit", "Withdrawal", "Check Balance"}));
+		actionBox.setModel(new DefaultComboBoxModel(new String[] {"", "Add An Account", "Deposit", "Withdrawal", "Check Balance"}));
 		actionBox.setBounds(10, 48, 412, 29);
 		panel.add(actionBox);
 		
@@ -212,21 +213,11 @@ public class LocalBank
 					String beg = begBalance.getText();
 					double bal = Double.parseDouble(beg);
 					
-					Account newacc = new Account(bal, firstN, lastN);
-					String accId = newacc.getID();
-					
 					String newact = bank.addAccount(firstN, lastN, bal);
 					
 					display.setText("Account Added!"
 							+"\nAcc ID: " + newact
 							+ "\nSelect Next Action.");
-				}
-				else if(actionBox.getSelectedItem().equals("Remove An Account"))
-				{
-					String acc = accNum.getText();
-					Account remAcc = new Account(acc);
-					
-					
 				}
 				else if(actionBox.getSelectedItem().equals("Deposit"))
 				{
@@ -235,8 +226,7 @@ public class LocalBank
 					double amt = Double.parseDouble(amount);
 					bank.transaction(1, acc, amt);
 					
-					display.setText("$" + amount + " deposited."
-							+ "\nSelect Next Action.");
+					display.setText(bank.transaction(1, acc, amt));
 				}
 				else if (actionBox.getSelectedItem().equals("Withdrawal"))
 				{
@@ -245,8 +235,7 @@ public class LocalBank
 					double amt = Double.parseDouble(amount);
 					bank.transaction(2, acc, amt);
 					
-					display.setText("$" + amount + " withdrew."
-							+ "\nSelect Next Action.");
+					display.setText(bank.transaction(1, acc, amt));
 				}
 				else if (actionBox.getSelectedItem().equals("Check Balance"))
 				{
