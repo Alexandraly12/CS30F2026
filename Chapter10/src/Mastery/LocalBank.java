@@ -21,7 +21,7 @@ import javax.swing.JTextArea;
 public class LocalBank 
 {
 
-	Bank bank = new Bank();
+	Bank bank = new Bank(); // create bank object
 	
 	private JFrame frame;
 	private JTextField accNum;
@@ -82,19 +82,19 @@ public class LocalBank
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				if(actionBox.getSelectedItem().equals("Add An Account"))
+				if(actionBox.getSelectedItem().equals("Add An Account")) // Convey required fields when adding an account
 				{
 					Instruction.setText("Complete the Information in BLACK:");
 				}
-				else if(actionBox.getSelectedItem().equals("Remove An Account"))
+				else if(actionBox.getSelectedItem().equals("Remove An Account")) // Convey required fields when removing an account
 				{
 					Instruction.setText("Complete the Information in RED:");
 				}
-				else if(actionBox.getSelectedItem().equals("Check Balance"))
+				else if(actionBox.getSelectedItem().equals("Check Balance")) // Convey required fields when checking balance
 				{
 					Instruction.setText("Complete the Information in RED:");
 				}
-				else
+				else // Convery required fields when depositing or withdrawing
 				{
 					Instruction.setText("Complete the Information in RED and BLUE:");
 				}
@@ -108,7 +108,7 @@ public class LocalBank
 		accNum.addKeyListener(new KeyAdapter() 
 		{
 			@Override
-			public void keyTyped(KeyEvent e) 
+			public void keyTyped(KeyEvent e) // Makes text disappear when user starts typing
 			{
 				if(accNum.getText().equals("Account Number:"))
 				{
@@ -127,7 +127,7 @@ public class LocalBank
 		Amt.addKeyListener(new KeyAdapter() 
 		{
 			@Override
-			public void keyTyped(KeyEvent e) 
+			public void keyTyped(KeyEvent e)  // Makes text disappear when user starts typing
 			{
 				if(Amt.getText().equals("Amount Deposit/Withdrawal:"))
 				{
@@ -146,7 +146,7 @@ public class LocalBank
 		fN.addKeyListener(new KeyAdapter() 
 		{
 			@Override
-			public void keyTyped(KeyEvent e) 
+			public void keyTyped(KeyEvent e) // Makes text disappear when user starts typing
 			{
 				if(fN.getText().equals("First Name:"))
 				{
@@ -164,9 +164,9 @@ public class LocalBank
 		lN.addKeyListener(new KeyAdapter() 
 		{
 			@Override
-			public void keyTyped(KeyEvent e) 
+			public void keyTyped(KeyEvent e) // Makes text disappear when user starts typing
 			{
-				if(lN.getText().equals("Last Name:"))
+				if(lN.getText().equals("Last Name:")) 
 				{
 					lN.setText("");
 				}
@@ -182,7 +182,7 @@ public class LocalBank
 		begBalance.addKeyListener(new KeyAdapter() 
 		{
 			@Override
-			public void keyTyped(KeyEvent e) 
+			public void keyTyped(KeyEvent e) // Makes text disappear when user starts typing
 			{
 				if(begBalance.getText().equals("Beginning Balance:"))
 				{
@@ -206,14 +206,14 @@ public class LocalBank
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				if(actionBox.getSelectedItem().equals("Add An Account"))
+				if(actionBox.getSelectedItem().equals("Add An Account")) 
 				{
 					String firstN = fN.getText();
 					String lastN = lN.getText();
 					String beg = begBalance.getText();
 					double bal = Double.parseDouble(beg);
 					
-					String accId = bank.addAccount(firstN, lastN, bal);
+					String accId = bank.addAccount(firstN, lastN, bal); // Adds an account
 					
 					display.setText("Account Added!"
 							+"\nAcc ID: " + accId
@@ -223,7 +223,7 @@ public class LocalBank
 				{
 					String acc = accNum.getText();
 					
-					display.setText(bank.deleteAccount(acc));
+					display.setText(bank.deleteAccount(acc)); // Deletes account
 				}
 				else if(actionBox.getSelectedItem().equals("Deposit"))
 				{
@@ -231,7 +231,7 @@ public class LocalBank
 					String amount = Amt.getText();
 					double amt = Double.parseDouble(amount);
 					
-					display.setText(bank.transaction(1, acc, amt));
+					display.setText(bank.transaction(1, acc, amt)); // Performs deposit
 				}
 				else if (actionBox.getSelectedItem().equals("Withdrawal"))
 				{
@@ -239,20 +239,21 @@ public class LocalBank
 					String amount = Amt.getText();
 					double amt = Double.parseDouble(amount);
 					
-					display.setText(bank.transaction(2, acc, amt));
+					display.setText(bank.transaction(2, acc, amt)); // Performs withdrawal
 				}
 				else if (actionBox.getSelectedItem().equals("Check Balance"))
 				{
 					String acc = accNum.getText();
 					String newbal = bank.checkBalance(acc);
 					
-					display.setText(newbal);
+					display.setText(newbal); //Displays balance
 				}
 				else
 				{
-					display.setText("Select An Action.");
+					display.setText("Select An Action."); //Prompts to select and action, when none is selected
 				}
 				
+				//Resets titles after action is completed
 				accNum.setText("Account Number:");
 				Amt.setText("Amount Deposit/Withdrawal:");
 				fN.setText("First Name:");
