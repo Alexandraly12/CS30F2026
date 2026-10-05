@@ -100,7 +100,7 @@ public class LocalBank
 				}
 			}
 		});
-		actionBox.setModel(new DefaultComboBoxModel(new String[] {"", "Add An Account", "Deposit", "Withdrawal", "Check Balance"}));
+		actionBox.setModel(new DefaultComboBoxModel(new String[] {"", "Add An Account", "Remove An Account", "Deposit", "Withdrawal", "Check Balance"}));
 		actionBox.setBounds(10, 48, 412, 29);
 		panel.add(actionBox);
 		
@@ -213,18 +213,23 @@ public class LocalBank
 					String beg = begBalance.getText();
 					double bal = Double.parseDouble(beg);
 					
-					String newact = bank.addAccount(firstN, lastN, bal);
+					String accId = bank.addAccount(firstN, lastN, bal);
 					
 					display.setText("Account Added!"
-							+"\nAcc ID: " + newact
+							+"\nAcc ID: " + accId
 							+ "\nSelect Next Action.");
+				}
+				else if(actionBox.getSelectedItem().equals("Remove An Account"))
+				{
+					String acc = accNum.getText();
+					
+					display.setText(bank.deleteAccount(acc));
 				}
 				else if(actionBox.getSelectedItem().equals("Deposit"))
 				{
 					String acc = accNum.getText();
 					String amount = Amt.getText();
 					double amt = Double.parseDouble(amount);
-					bank.transaction(1, acc, amt);
 					
 					display.setText(bank.transaction(1, acc, amt));
 				}
@@ -233,9 +238,8 @@ public class LocalBank
 					String acc = accNum.getText();
 					String amount = Amt.getText();
 					double amt = Double.parseDouble(amount);
-					bank.transaction(2, acc, amt);
 					
-					display.setText(bank.transaction(1, acc, amt));
+					display.setText(bank.transaction(2, acc, amt));
 				}
 				else if (actionBox.getSelectedItem().equals("Check Balance"))
 				{
