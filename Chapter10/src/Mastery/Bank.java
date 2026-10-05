@@ -94,10 +94,13 @@ public class Bank
 		
 	 	acctToMatch = new Account(acctID);
 	 	acctIndex = accounts.indexOf(acctToMatch);		//retrieve location of account
-	 	if (acctIndex > -1) {
+	 	if (acctIndex > -1) 
+	 	{
 	 		acct = (Account)accounts.get(acctIndex);	//retrieve object to display
 	 		return(acct.toString());
-	 	} else {
+	 	} 
+	 	else 
+	 	{
 	 		return("Account does not exist.");
 	 	}
 	}
