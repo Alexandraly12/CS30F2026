@@ -94,7 +94,7 @@ public class LocalBank
 				{
 					Instruction.setText("Complete the Information in RED:");
 				}
-				else // Convery required fields when depositing or withdrawing
+				else // Convey required fields when depositing or withdrawing
 				{
 					Instruction.setText("Complete the Information in RED and BLUE:");
 				}
@@ -211,7 +211,7 @@ public class LocalBank
 					String firstN = fN.getText();
 					String lastN = lN.getText();
 					String beg = begBalance.getText();
-					double bal = Double.parseDouble(beg);
+					double bal = Double.parseDouble(beg); // Turns String into Double
 					
 					String accId = bank.addAccount(firstN, lastN, bal); // Adds an account
 					
@@ -229,7 +229,7 @@ public class LocalBank
 				{
 					String acc = accNum.getText();
 					String amount = Amt.getText();
-					double amt = Double.parseDouble(amount);
+					double amt = Double.parseDouble(amount); // Turns String into double
 					
 					display.setText(bank.transaction(1, acc, amt)); // Performs deposit
 				}
@@ -237,7 +237,7 @@ public class LocalBank
 				{
 					String acc = accNum.getText();
 					String amount = Amt.getText();
-					double amt = Double.parseDouble(amount);
+					double amt = Double.parseDouble(amount); // Turns String into Double
 					
 					display.setText(bank.transaction(2, acc, amt)); // Performs withdrawal
 				}
@@ -250,7 +250,7 @@ public class LocalBank
 				}
 				else
 				{
-					display.setText("Select An Action."); //Prompts to select and action, when none is selected
+					display.setText("Select An Action."); //Prompts to select an action, when none is selected
 				}
 				
 				//Resets titles after action is completed
