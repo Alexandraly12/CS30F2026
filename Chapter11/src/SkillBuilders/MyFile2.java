@@ -14,15 +14,25 @@ public class MyFile2
 		//Create new file
 		textFile = new File("C:\\Users\\49358507\\git\\CS30F2026\\Chapter11\\src\\SkillBuilders\\zzz.txt");
 		
-		try 
+		//Check if file exists
+		if(textFile.exists())                                                              
 		{
-			textFile.createNewFile();
-			System.out.println("File: zzz.txt has been created.");
+			System.out.println("File zzz.txt exists.");
 		}
-		catch (IOException e)
+		else
 		{
-			System.out.println("File: zzz.txt could not be created.");
-			System.err.println("IOException: " + e.getMessage());
+			System.out.println("File does not exist.");
+			//Create file if it does not exist
+			try 
+			{
+				textFile.createNewFile();
+				System.out.println("File: zzz.txt has been created.");
+			}
+			catch (IOException e)
+			{
+				System.out.println("File: zzz.txt could not be created.");
+				System.err.println("IOException: " + e.getMessage());
+			}
 		}
 		
 		//Prompt user to keep or delete file
@@ -30,7 +40,7 @@ public class MyFile2
 		String choice = input.nextLine();
 		
 		//Delete file
-		if(choice.equals("Delete"))
+		if(choice.equalsIgnoreCase("Delete"))
 		{
 			//textFile.delete();
 			if(textFile.delete())
@@ -41,6 +51,10 @@ public class MyFile2
 			{
 				System.out.println("File failed to delete.");
 			}
+		}
+		else
+		{
+			System.out.println("File is kept.");
 		}
 		
 		input.close();
