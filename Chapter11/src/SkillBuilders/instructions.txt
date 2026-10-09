@@ -1,1 +1,4 @@
-Instructions: Assignment 1 - First figure out your research topic.
+Assignment 1 - 
+Create a instructions file. 
+Write the code for the assignment. 
+Test your code.

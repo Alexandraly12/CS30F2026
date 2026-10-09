@@ -27,7 +27,7 @@ public class Assignment
 			//Display the file
 			while((lineOfText = readFile.readLine()) != null)
 			{
-				System.out.print(lineOfText);
+				System.out.println(lineOfText);
 			}
 			
 			//Close the streams
