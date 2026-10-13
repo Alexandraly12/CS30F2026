@@ -14,7 +14,7 @@ public class Assignment
 		String lineOfText;
 		
 		//Create new file
-		textFile = new File("C:\\Users\\49358507\\git\\CS30F2026\\Chapter11\\src\\SkillBuilders\\instructions.txt");
+		textFile = new File("../Chapter11/src/SkillBuilders/instructions.txt");
 		
 		//Read the file
 		try 

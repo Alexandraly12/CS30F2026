@@ -12,7 +12,7 @@ public class MyFile2
 		Scanner input = new Scanner(System.in);
 		
 		//Create new file
-		textFile = new File("C:\\Users\\49358507\\git\\CS30F2026\\Chapter11\\src\\SkillBuilders\\zzz.txt");
+		textFile = new File("../Chapter11/src/SkillBuilders/zzz.txt");
 		
 		//Check if file exists
 		if(textFile.exists())                                                              
