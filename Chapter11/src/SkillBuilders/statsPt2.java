@@ -9,12 +9,15 @@ public class statsPt2
 
 	public static void main(String[] args) 
 	{
-		File dataFile = new File("../Chapter11/src/SkillBuilders/grades.txt");
+		File dataFile;
 		FileWriter out;
 		BufferedWriter writeFile;
 		FileReader in;
 		BufferedReader readFile;
 		Scanner input = new Scanner(System.in);
+		
+		String fileName;
+		int numStu;
 		
 		String stuName, score;
 		double scoreValue;
@@ -27,12 +30,20 @@ public class statsPt2
 		
 		NumberFormat percent = NumberFormat.getPercentInstance();
 		
+		System.out.println("Enter File Name: ");
+		fileName = input.next();
+		
+		System.out.println("Enter Student Amount: ");
+		numStu = input.nextInt();
+		
+		
 		try
 		{
+			dataFile = new File(fileName);
 			out = new FileWriter(dataFile);
 			writeFile = new BufferedWriter(out);
 			
-			for( int i = 0; i < 4; i ++)
+			for( int i = 0; i < numStu; i ++) // only use for loop if u know how many times it has to run, if not use while
 			{
 				System.out.println("Enter Student Name: ");
 				stuName = input.next();
@@ -51,12 +62,13 @@ public class statsPt2
 		}
 		catch (IOException e)
 		{
-			System.out.println("Problem reading file.");
+			System.out.println("Problem writing to file.");
 			System.err.println("IOException: " + e.getMessage());
 		}
 		
 		try
 		{
+			dataFile = new File(fileName);
 			//Creates input file stream (opens the door to text )
 			in = new FileReader(dataFile);
 			
