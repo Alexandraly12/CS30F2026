@@ -1,9 +1,12 @@
 package SkillBuilders;
 
-public class stuName 
+import java.io.Serializable;
+
+public class stuName implements Serializable
 {
 	private String firstName, lastName;
 	
+	//Constructor
 	public stuName(String fName, String lName)
 	{
 		firstName = fName;
@@ -14,7 +17,7 @@ public class stuName
 	{
 		String stuString;
 		
-		stuString = firstName + lastName;
+		stuString = firstName + " " + lastName;
 		return(stuString);
 	}
 

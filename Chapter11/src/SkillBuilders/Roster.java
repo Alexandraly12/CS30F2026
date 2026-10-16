@@ -32,28 +32,33 @@ public class Roster
 			writeStu = new ObjectOutputStream(out);
 			
 			//Write Objects
-			System.out.println("Enter Student's First Name: ");
-			fName = input.next();
-			
-			System.out.println("Enter Student's Last Name: ");
-			lName = input.next();		
-			
-			writeStu.writeObject(new stuName(fName, lName));
-			writeStu.writeObject(new stuName(fName, lName));
-			System.out.print("Names entered to file.");
+			for( int i = 0; i < numStu; i ++) 
+			{
+				System.out.println("Enter Student's First Name: ");
+				fName = input.next();
+				
+				System.out.println("Enter Student's Last Name: ");
+				lName = input.next();		
+				
+				writeStu.writeObject(new stuName(fName, lName)); //Creating student object while writing to the file
+				
+			}
 			
 			writeStu.close();
+			System.out.println("Names entered to file.");
+			System.out.println("Student Roster: ");
 			
 			//Read Objects
 			in = new FileInputStream(dataFile);
 			readStu = new ObjectInputStream(in);
 			
-			stuName stu1 = (stuName)readStu.readObject();
-			stuName stu2 = (stuName)readStu.readObject();
-			
-			System.out.println(stu1);
-			System.out.println(stu2);
-			
+			for(int i = 0; i < numStu; i++)
+			{
+				stuName read = (stuName)readStu.readObject();
+					
+				System.out.println(read);
+			}
+				
 			readStu.close();
 			input.close();
 			
@@ -65,7 +70,7 @@ public class Roster
 		}
 		catch (IOException e)
 		{
-			System.out.println("Problem writing to file.");
+			System.out.println("Problem with input/output.");
 			System.err.println("IOException: " + e.getMessage());
 		}
 		catch (ClassNotFoundException e)
@@ -74,8 +79,6 @@ public class Roster
 			System.err.println("ClassNotFoundException : " + e.getMessage());
 		}
 		
-		
-		System.out.println("Student Roster: ");
 		
 
 	}
