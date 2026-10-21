@@ -25,14 +25,13 @@ public class WordGuess
 		BufferedReader readFile;
 		
 		//Create a random number object
-		int ranNum = (int)(Math.random() * 3) + 1;
+		int wordToGuess = (int)((Math.random() * 3) + 1);
 		
-		int numWords = 0, wordToGuess = 0;
-		String secretWord = "";
+		int numWords = 0;
+		String words, secretWord = "";
 		String wordSoFar = "", updatedWord = "";
 		String letterGuess = "", wordGuess = "";
 		int numGuesses = 0;	
-		
 		
 
 		/* select secret word */
@@ -40,22 +39,24 @@ public class WordGuess
 		{
 				//initialize the file reader object to name of the file object
 				in = new FileReader(dataFile);
-               //initialize the BufferedReader object to the name of the file reader as a parameter
+                //initialize the BufferedReader object to the name of the file reader as a parameter
 				readFile = new BufferedReader(in);
 				//Get the number of words in the file using readFile
-				while((secretWord = readFile.readLine()) != null) 
+				while(( words = readFile.readLine()) != null) 
 				{
+					System.out.println(words);
 					numWords += 1;
+					System.out.println(numWords);
 				}
+				
                //update the word to guess to the random object and number of words read plus one
-               ranNum = (int)(Math.random() * numWords) + 1;
+               wordToGuess = (int)(Math.random() * numWords) + 1;
 				
                //iterate through the word to guess slots
-               for(int i = 0; i < ranNum; i++)
+               for(int i = 0; i < wordToGuess; i++)
                {
             	   //update the secret word from the lines read from the file
-	               secretWord = readFile.readLine();
-	               System.out.print(secretWord);
+            	   secretWord = readFile.readLine();
                }
                
                //close your BufferedReader object
@@ -75,24 +76,27 @@ public class WordGuess
 			System.err.println("IOException: " + e.getMessage());
 		}
 
-
-
 		/* begin the game */
 		System.out.println("WordGuess game.\n");
 
        //iterate through the secret word, and update the word so far variable to represent using dashes 
        //the length of the secret word
        //output the word so far using dashes
-		
-
+		for(int i = 0; i < secretWord.length(); i++)
+		{
+			wordSoFar += "-";
+		}
+		System.out.println(wordSoFar);
 
 
 		/* allow player to make guesses*/
 
-		do {
+		do 
+		{
 			//?? prompt for a letter
-			System.out.println("Guess a Letter: ");
+			System.out.println("Guess a Letter ( Enter ! to guess the entire word ): ");
 			letterGuess = input.next();
+			letterGuess = letterGuess.toUpperCase();
 
 			/* increment number of guesses */
 			//?
@@ -104,9 +108,10 @@ public class WordGuess
 			 */
 			
             //???
-			if(letterGuess)
-
-
+			if(letterGuess.equals(wordGuess))
+			{
+				
+			}
 
 
 			/* display guessed letter instead of dash */
@@ -115,11 +120,11 @@ public class WordGuess
 
 		} while (!letterGuess.equals(FLAG) && !wordSoFar.equals(secretWord));
 
-
-
-       
 		/* finish game and display message and number of guesses */
-		
+		if(letterGuess.equals(FLAG))
+		{
+			System.out.println("Number of Guesses: " + numGuesses);
+		}
        //??
 	}
 }
