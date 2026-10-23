@@ -14,8 +14,6 @@ public class countVowels
        String fileName;
        String lineInFile, lowercaseText, letter;
        int vowelSum = 0;
-       
-       
 
        /* prompt the user for the name of the file */
        Scanner input = new Scanner(System.in);
@@ -40,17 +38,24 @@ public class countVowels
     				for(int i = 0; i < lowercaseText.length(); i ++)
     				{
                         //using the String class 
-                        //check if each character traverse throug is a vowel
-    					letter = String.
-                        //update total vowels
+                        //check if each character traverse through is a vowel
+    					if(lowercaseText.contains(letter))
+    					{
+    						//update total vowels
+    						vowelSum += 1;
+    					}
     							
     				}
-    			}
+    			} // End While
+    	  		
+    	  		//user wants to know the number of vowels inside a file name
+           		System.out.println("Number of vowels in file: " + vowelSum);
+                //close BufferedReader object
+           		readFile.close();
+                //close FileReader object 
+           		in.close();
             }
-            //user wants to know the number of vowels inside a file name
-
-            //close BufferedReader object
-            //close FileReader object 
+            
 	   	catch(FileNotFoundException e) //Catches exceptions for FileReader
 		{
 			System.out.println("File does not exist or could not be found.");
