@@ -12,8 +12,9 @@ public class countVowels
        FileReader in;
        BufferedReader readFile;
        String fileName;
-       String lineInFile, lowercaseText, letter;
+       String lineInFile, lowercaseText, letter = "aeiou";
        int vowelSum = 0;
+       int a = 0,E = 0,I = 0,o = 0,u = 0;
 
        /* prompt the user for the name of the file */
        Scanner input = new Scanner(System.in);
@@ -31,7 +32,6 @@ public class countVowels
                 //read the lines from the file
     	  		while((lineInFile = readFile.readLine()) != null)
     			{
-    			
                     //as lines are read convert them to lower case
     				lowercaseText = lineInFile.toLowerCase();
                     //iterate through the lower case text
@@ -39,10 +39,35 @@ public class countVowels
     				{
                         //using the String class 
                         //check if each character traverse through is a vowel
-    					if(lowercaseText.contains(letter))
+    					if(lowercaseText.charAt(i) == letter.charAt(0))
     					{
     						//update total vowels
     						vowelSum += 1;
+    						a += 1;
+    					}
+    					if(lowercaseText.charAt(i) == letter.charAt(1))
+    					{
+    						//update total vowels
+    						vowelSum += 1;
+    						E += 1;
+    					}
+    					if(lowercaseText.charAt(i) == letter.charAt(2))
+    					{
+    						//update total vowels
+    						vowelSum += 1;
+    						I += 1;
+    					}
+    					if(lowercaseText.charAt(i) == letter.charAt(3))
+    					{
+    						//update total vowels
+    						vowelSum += 1;
+    						o += 1;
+    					}
+    					if(lowercaseText.charAt(i) == letter.charAt(4))
+    					{
+    						//update total vowels
+    						vowelSum += 1;
+    						u += 1;
     					}
     							
     				}
@@ -50,6 +75,11 @@ public class countVowels
     	  		
     	  		//user wants to know the number of vowels inside a file name
            		System.out.println("Number of vowels in file: " + vowelSum);
+           		System.out.println("A: " + a 
+           				+ "\nE: " + E
+           				+ "\nI: " + I
+           				+ "\nO: " + o
+           				+ "\nU: " + u);
                 //close BufferedReader object
            		readFile.close();
                 //close FileReader object 
@@ -66,6 +96,8 @@ public class countVowels
 			System.out.println("Problem reading file.");
 			System.err.println("IOException: " + e.getMessage());
 		}
+       
+       input.close();
    }
 }
 
