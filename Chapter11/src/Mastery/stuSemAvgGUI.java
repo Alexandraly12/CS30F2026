@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -33,6 +35,8 @@ public class stuSemAvgGUI {
 	private JTextField gr3;
 	private JTextField gr4;
 	private JTextField avgGrd;
+	
+	private File dataFile = new File("");
 
 	/**
 	 * Launch the application.
@@ -55,6 +59,14 @@ public class stuSemAvgGUI {
 	 */
 	public stuSemAvgGUI() {
 		initialize();
+		
+		try {
+			FileWriter out = new FileWriter(dataFile, false);
+		} 
+		catch (IOException e) 
+		{
+			e.getMessage();
+		}
 	}
 
 	/**
@@ -171,26 +183,38 @@ public class stuSemAvgGUI {
 				DecimalFormat dc = new DecimalFormat("0.0");
 				avgGrd.setText(dc.format(avgGrade));
 				
-				File dataFile;
 				FileWriter out;
 				BufferedWriter writeFile;
 				
 				try
 				{
-					dataFile = new File("../Chapter11/src/Mastery/stuGrade.txt");
-					out = new FileWriter(dataFile);
+					out = new FileWriter(dataFile, true);
 					writeFile = new BufferedWriter(out);
-					
-					writeFile.write(" Name: " + name + " Grade Level: " + grade + " Semester: " + sem + " Grades: " + grade1 + ", " + grade2 + ", " + grade3 + ", " + grade4 + " Average: " + avgGrade);
+				    
+					writeFile.write("Name: " + name
+						+ " Grade Level: " + grade
+				        + " Semester: " + sem
+				        + " Grades: " + grade1 + ", "
+				        + grade2 + ", " + grade3 + ", " + grade4
+				        + " Average: " + dc.format(avgGrade));
 					writeFile.newLine();
 					
-					writeFile.close();
-					out.close();
-				}
-				catch (IOException p)
-				{
-					System.out.println("Problem writing to file.");
-					System.err.println("IOException: " + p.getMessage());
+				    writeFile.close();
+				    out.close();
+				    JOptionPane.showMessageDialog(
+				        frame,
+				        "Student grades saved successfully!",
+				        "Success",
+				        JOptionPane.INFORMATION_MESSAGE
+				    );
+				} catch (IOException p) {
+				    JOptionPane.showMessageDialog(
+				        frame,
+				        "Error saving student grades: " + p.getMessage(),
+				        "File Error",
+				        JOptionPane.ERROR_MESSAGE
+				    );
+				    System.err.println("IOException: " + p.getMessage());
 				}
 				
 				gr1.setText("");
@@ -211,35 +235,52 @@ public class stuSemAvgGUI {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				try  
+				try 
 				{
-					File dataFile;
 					FileReader in;
 					BufferedReader readFile;
-					String dis;
-					
-					dataFile = new File("../Chapter11/src/Mastery/stuGrade.txt");
+					String read, dis = "";
 					
 					in = new FileReader(dataFile);
 					readFile = new BufferedReader(in);
 					
-					while((dis = readFile.readLine()) != null)
+					while((read = readFile.readLine()) != null)
 					{
-						display.setText(dis);
+						dis += read + "\n";
 					}
+		
+					display.setText(dis);
 					
 					readFile.close();
 					in.close();
 					
+					JOptionPane.showMessageDialog
+					(
+					        frame,
+					        "Student grades displayed!",
+					        "Success",
+					        JOptionPane.INFORMATION_MESSAGE
+					    );
+					
 				}
 				catch(FileNotFoundException p) //Catches exceptions for FileReader
 				{
-					System.out.println("File does not exist or could not be found.");
+					JOptionPane.showMessageDialog(
+					        frame,
+					        "Error displaying student grades: " + p.getMessage(),
+					        "File Not Found",
+					        JOptionPane.ERROR_MESSAGE
+					    );
 					System.err.println("FileNotFoundException: " + p.getMessage());
 				}
 				catch (IOException p) //Catches exceptions for BufferedReader
 				{
-					System.out.println("Problem reading file.");
+					JOptionPane.showMessageDialog(
+					        frame,
+					        "Error displaying student grades: " + p.getMessage(),
+					        "Probelm reading File",
+					        JOptionPane.ERROR_MESSAGE
+					    );
 					System.err.println("IOException: " + p.getMessage());
 				}
 			}
