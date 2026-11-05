@@ -91,4 +91,12 @@ public class Puck extends Disk
 			return 1;
 		}
 	}
+	
+	public String toString() {
+		String puckString;
+
+		puckString = "The puck has radius " + super.getRadius() +
+					 ", thickness " + super.getThickness() + " and weight " + weight + ".";
+	 	return(puckString);
+	}
 }
