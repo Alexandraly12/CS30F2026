@@ -61,30 +61,57 @@ public class Rectangle
 		}
 	}
 	
-	public int compareWAndL(Object r)
+	interface Comparable
 	{
-		Rectangle obR = (Rectangle)r;
-		
-		if(length < obR.getLength())
-		{
-			return -1;
-		}
-		else if(width < obR.getWidth())
-		{
-			return -1;
-		}
-		else if (length == obR.getLength() && width == obR.getWidth())
-		{
-			return 0;
-		}
-		else
-		{
-			return 1;
-		}
+		public int compareTo(Object r);
 	}
 	
-	public int compareArea(Object r)
+	interface CompareableArea
 	{
+		public int compareToArea(Object r);
+	}
+	
+	class recTest implements Comparable, CompareableArea
+	{
+		public int compareTo(Object r) 
+		{
+			Rectangle obR = (Rectangle)r;
+			
+			if(length < obR.getLength())
+			{
+				return -1;
+			}
+			else if(width < obR.getWidth())
+			{
+				return -1;
+			}
+			else if (length == obR.getLength() && width == obR.getWidth())
+			{
+				return 0;
+			}
+			else
+			{
+				return 1;
+			}
+		}
+		
+		public int compareToArea(Object r)
+		{
+			Rectangle obR = (Rectangle)r;
+			
+			if(area() < obR.area())
+			{
+				return -1;
+			}
+			else if (area() == obR.area())
+			{
+				return 0;
+			}
+			else
+			{
+				return 1;
+			}
+		}
 		
 	}
 	

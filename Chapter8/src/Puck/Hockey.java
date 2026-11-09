@@ -1,6 +1,6 @@
 package Puck;
 
-public class TestPuck {
+public class Hockey {
 
 	public static void main(String[] args) 
 	{
