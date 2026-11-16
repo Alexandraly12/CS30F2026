@@ -1,4 +1,4 @@
-package Skillbuilders;
+ package Skillbuilders;
 
 public class Rectangle 
 {
@@ -63,63 +63,74 @@ public class Rectangle
 	
 	interface Comparable
 	{
-		public int compareTo(Object r);
+		public void rectangle();
 	}
 	
 	interface CompareableArea
 	{
-		public int compareToArea(Object r);
+		public void area();
 	}
 	
-	class recTest implements Comparable, CompareableArea
+	public class recTest implements Comparable, CompareableArea
 	{
-		public int compareTo(Object r) 
+		public void rectangle()
 		{
-			Rectangle obR = (Rectangle)r;
-			
-			if(length < obR.getLength())
-			{
-				return -1;
-			}
-			else if(width < obR.getWidth())
-			{
-				return -1;
-			}
-			else if (length == obR.getLength() && width == obR.getWidth())
-			{
-				return 0;
-			}
-			else
-			{
-				return 1;
-			}
+			width = 1;
+			length = 1;
 		}
 		
-		public int compareToArea(Object r)
+		public void area()
 		{
-			Rectangle obR = (Rectangle)r;
-			
-			if(area() < obR.area())
-			{
-				return -1;
-			}
-			else if (area() == obR.area())
-			{
-				return 0;
-			}
-			else
-			{
-				return 1;
-			}
+			int area = 1;
 		}
 		
+	}
+	
+	public int compareToArea(Object r)
+	{
+		Rectangle obR = (Rectangle)r;
+		
+		if(area() < obR.area())
+		{
+			return -1;
+		}
+		else if (area() == obR.area())
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	
+	public int compareTo(Object r) 
+	{ 
+		Rectangle obR = (Rectangle)r;
+		
+		if(length < obR.getLength())
+		{
+			return -1;
+		}
+		else if(width < obR.getWidth())
+		{
+			return -1;
+		}
+		else if (length == obR.getLength() && width == obR.getWidth())
+		{
+			return 0;
+		}
+		else
+		{
+			return 1;
+		}
 	}
 	
 	public String toString()
 	{
 		String recString;
 		
-		recString = "Rectangle has a length of " + length + " and a width of " + width + "." ;
+		recString = "has a length of " + length + " and a width of " + width + "." ;
 		return(recString);
 	}
 
