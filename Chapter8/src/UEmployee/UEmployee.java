@@ -2,8 +2,7 @@ package UEmployee;
 
 public abstract class UEmployee 
 {
-	String firstName, lastName;
-	
+	private String firstName, lastName;
 	
 	public UEmployee(String fName, String lName)
 	{
