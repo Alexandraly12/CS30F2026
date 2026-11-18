@@ -4,7 +4,7 @@ public class Faculty extends UEmployee
 {
 
 	private String department;
-	private double hourlyPayRate;
+
 	
 	public Faculty(String fName, String lName, String dpt)
 	{
@@ -12,30 +12,29 @@ public class Faculty extends UEmployee
 		department = dpt;
 	}
 	
-	public double pay(double hours)
+	public String getDepartment(String dpt)
 	{
-		double payEarned;
-		
-		//take into consideration overtime
-		if(hours > 40)
+		if(dpt.toUpperCase() == "M")
 		{
-			payEarned = ((hourlyPayRate * 40) + (hourlyPayRate * 1.5) * (hours - 40));
+			department = "Math";
 		}
-		else
+		else if(dpt.toUpperCase() == "E")
 		{
-			payEarned = hours * hourlyPayRate;
+			department = "English";
 		}
-		
-		return payEarned;
-	}
-	
-	public String depart()
-	{
-		
+		else if(dpt.toUpperCase() == "S")
+		{
+			department = "Social";
+		}
+		else if(dpt.toUpperCase() == "Sc")
+		{
+			department = "Science";
+		}
+		return department;
 	}
 	
 	public String toString()
 	{
-		return(super.toString() + ", Associate \nPay Rate: " + hourlyPayRate);
+		return(super.toString() + "\nDepartment: " + department);
 	}
 }

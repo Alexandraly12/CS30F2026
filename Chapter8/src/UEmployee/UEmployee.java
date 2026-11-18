@@ -3,6 +3,8 @@ package UEmployee;
 public abstract class UEmployee 
 {
 	private String firstName, lastName;
+	private double hourlyPayRate;
+	private double salary;
 	
 	public UEmployee(String fName, String lName)
 	{
@@ -10,10 +12,33 @@ public abstract class UEmployee
 		lastName = lName;
 	}
 	
-	public String toString()
+	public double pay(double hours)
 	{
-		return(firstName + " " + lastName);
+		double payEarned;
+		
+		//take into consideration overtime
+		if(hours > 40)
+		{
+			payEarned = ((hourlyPayRate * 40) + (hourlyPayRate * 1.5) * (hours - 40));
+		}
+		else
+		{
+			payEarned = hours * hourlyPayRate;
+		}
+		
+		return payEarned;
 	}
 	
-	abstract double pay(double period);
+	public String toString(String payStyle)
+	{	
+		if(payStyle.toUpperCase() == "Hourly")
+		{
+			return("Associate: " + firstName + " " + lastName  +  " \nPay Rate: $" + hourlyPayRate);
+		}
+		else
+		{
+			return("Associate: " + firstName + " " + lastName  +  " \nPay: $" + salary);
+		}
+	}
+
 }
