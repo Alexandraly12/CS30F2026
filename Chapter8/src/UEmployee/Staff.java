@@ -1,30 +1,30 @@
 package UEmployee;
 
-public class Staff extends Faculty
+public class Staff extends UEmployee
 {
 	private String jobTitle;
 	
-	public Staff(String fName, String lName, String dpt, String job)
+	public Staff(String fName, String lName, String job)
 	{
-		super(fName, lName, dpt);
+		super(fName, lName );
 		jobTitle = job;
 	}
 	
 	public String getTitle(String jTitle)
 	{
-		if(jTitle.toUpperCase() == "T")
+		if(jTitle.equalsIgnoreCase("T"))
 		{
 			jobTitle = "Teacher";
 		}
-		else if(jTitle.toUpperCase() == "P")
+		else if(jTitle.equalsIgnoreCase("P"));
 		{
 			jobTitle = "Principal";
 		}
-		else if(jTitle.toUpperCase() == "A")
+		if(jTitle.equalsIgnoreCase("A"))
 		{
 			jobTitle = "Assistant Principal";
 		}
-		else if(jTitle.toUpperCase() == "C")
+		else if(jTitle.equalsIgnoreCase("C"))
 		{
 			jobTitle = "Custodian";
 		}

@@ -12,26 +12,41 @@ public abstract class UEmployee
 		lastName = lName;
 	}
 	
-	public double pay(double hours)
+	public double Pay(double time, String type)
 	{
-		double payEarned;
+		double pay = 0;
 		
-		//take into consideration overtime
-		if(hours > 40)
+		if(type.equals("H"))
 		{
-			payEarned = ((hourlyPayRate * 40) + (hourlyPayRate * 1.5) * (hours - 40));
+			double payEarned;
+			//take into consideration overtime
+			if(time > 40)
+			{
+				payEarned = ((hourlyPayRate * 40) + (hourlyPayRate * 1.5) * (time - 40));
+			}
+			else
+			{
+				payEarned = time * hourlyPayRate;
+			}
+			
+			pay = payEarned;
 		}
-		else
+		else if(type.equals("S"))
 		{
-			payEarned = hours * hourlyPayRate;
+			double payEarned;
+			
+			payEarned = salary/52 * time;
+			
+			pay = payEarned;
 		}
 		
-		return payEarned;
+		return pay;
+		
 	}
 	
 	public String toString(String payStyle)
 	{	
-		if(payStyle.toUpperCase() == "Hourly")
+		if(payStyle.equalsIgnoreCase("H"))
 		{
 			return("Associate: " + firstName + " " + lastName  +  " \nPay Rate: $" + hourlyPayRate);
 		}

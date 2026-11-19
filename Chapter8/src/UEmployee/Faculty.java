@@ -3,8 +3,7 @@ package UEmployee;
 public class Faculty extends UEmployee
 {
 
-	private String department;
-
+	private static String department;
 	
 	public Faculty(String fName, String lName, String dpt)
 	{
@@ -14,19 +13,19 @@ public class Faculty extends UEmployee
 	
 	public String getDepartment(String dpt)
 	{
-		if(dpt.toUpperCase() == "M")
+		if(dpt.equalsIgnoreCase("M"))
 		{
 			department = "Math";
 		}
-		else if(dpt.toUpperCase() == "E")
+		else if(dpt.equalsIgnoreCase("E"))
 		{
 			department = "English";
 		}
-		else if(dpt.toUpperCase() == "S")
+		else if(dpt.equalsIgnoreCase("S"))
 		{
 			department = "Social";
 		}
-		else if(dpt.toUpperCase() == "Sc")
+		else if(dpt.equalsIgnoreCase("Sc"))
 		{
 			department = "Science";
 		}
@@ -37,4 +36,5 @@ public class Faculty extends UEmployee
 	{
 		return(super.toString() + "\nDepartment: " + department);
 	}
+	
 }
