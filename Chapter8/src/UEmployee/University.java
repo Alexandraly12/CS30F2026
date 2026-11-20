@@ -3,8 +3,6 @@ package UEmployee;
 import java.text.NumberFormat;
 import java.util.Scanner;
 
-import CresMart.Employee;
-
 public class University 
 {
 	public static void payEmployee(UEmployee emp, double payArg)
@@ -24,34 +22,48 @@ public class University
 	{
 		Scanner input = new Scanner(System.in);
 		
-		//System.out.println("Enter Employee First Name: ");
-		//String fN = input.nextLine();
-		
-		//System.out.println("Enter Employee Last Name: ");
-		//String lN = input.nextLine();
-		
 		Faculty emp1 = new Faculty("Alexandra", "Ly", "Math");
 		
 		Staff emp2 = new Staff("Sahej", "Parhar", "Teacher");
 		
-		//System.out.println("Enter Department {(M)ath, (E)nglish, (S)ocial, (Sc)ience}: ");
-		//String dep = input.nextLine();
+		String action;
+		double payArg;
+		int empNum;
+		UEmployee emp = emp1;
 		
-		//System.out.println("Enter Job Title {(T)eacher, (A)ssistant Principal, (P)rincipal, (C)ustodian}: ");
-		//String job = input.nextLine();
-		
-		
-		System.out.println("Hourly Pay? ( Y or N ): ");
-		String type = input.nextLine();
-		if(type.toUpperCase() == "Y")
+		do
 		{
-			System.out.println("Enter Hours Worked: ");
-			String num = input.nextLine();
-			double hours = Double.parseDouble(num);
-			//System.out.println(employee.pay(hours));
-		}
-		
-		//System.out.println(employee.getDepartment(dep) + employee.getTitle(job) + employee.toString());
+			System.out.println("\n(E)mployee \\ (P)ay \\ (Q)uit");
+			System.out.println("Enter choice: ");
+			action = input.next();
+			
+			if(!action.equalsIgnoreCase("Q"))
+			{	
+				System.out.println("Enter Employee Number (1 or 2)");
+				empNum = input.nextInt();
+				
+				switch(empNum)
+				{
+					case 1: emp = emp1; break;
+					case 2: emp = emp2; break;
+				}
+				
+				if(action.equalsIgnoreCase("E"))
+				{
+					System.out.println(emp);
+				}
+				else if(action.equalsIgnoreCase("P"))
+				{	
+					System.out.println("Enter hours OR pay period: ");
+					
+					payArg = input.nextDouble();
+					
+					payEmployee(emp, payArg);
+				}
+			}
+			
+		}while(!action.equalsIgnoreCase("Q"));
+		//System.out.println(employee.getDepartment(dep) + employee.getTitle(job) + emp);
 
 	}
 

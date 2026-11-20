@@ -44,16 +44,9 @@ public abstract class UEmployee
 		
 	}
 	
-	public String toString(String payStyle)
+	public String toString()
 	{	
-		if(payStyle.equalsIgnoreCase("H"))
-		{
-			return("Associate: " + firstName + " " + lastName  +  " \nPay Rate: $" + hourlyPayRate);
-		}
-		else
-		{
-			return("Associate: " + firstName + " " + lastName  +  " \nPay: $" + salary);
-		}
+		return("Associate: " + firstName + " " + lastName  +  " \nPay: $" + hourlyPayRate);
 	}
 
 }
